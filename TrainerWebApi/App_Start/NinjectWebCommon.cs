@@ -1,3 +1,4 @@
+using TrainerWebApi.Helpers;
 using TrainerWebApi.Models;
 using TrainerWebApi.Repositories;
 using TrainerWebApi.Services;
@@ -70,7 +71,10 @@ namespace TrainerWebApi.App_Start
             kernel.Bind<IRepository<ExerciseCard>>().To<GenericRepository<ExerciseCard>>();
             kernel.Bind<IRepository<Training>>().To<GenericRepository<Training>>();
             kernel.Bind<IRepository<User>>().To<GenericRepository<User>>();
+            kernel.Bind<IRepository<Report>>().To<GenericRepository<Report>>();
 
+
+            kernel.Bind<IConfigHelper>().To<ConfigHelper>();
         }
     }
 }

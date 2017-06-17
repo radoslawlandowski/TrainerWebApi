@@ -11,21 +11,36 @@ namespace TrainerWebApi.Controllers
 {
     public class ReportController : ApiController
     {
-        private readonly IRepository<Report> _trainingSessionRepository;
+        private readonly IRepository<Report> _reportRepository;
 
-        public ReportController(IRepository<Report> trainingSessionRepository)
+        public ReportController(IRepository<Report> reportRepository)
         {
-            _trainingSessionRepository = trainingSessionRepository;
+            _reportRepository = reportRepository;
         }
 
-        public IEnumerable<Report> GetTrainingSessions()
+        public IEnumerable<Report> GetAllReports()
         {
-            return _trainingSessionRepository.GetAll();
+            return _reportRepository.GetAll();
         }
 
-        public IHttpActionResult GetTrainingSession(int id)
+        [Route("api/report/{trainingName}")]
+        public IEnumerable<Report> GetReportForTraining(string trainingName)
         {
-            var session = _trainingSessionRepository.GetById(id);
+            return _reportRepository.Get(r => r.Training.Name == trainingName);
+        }
+
+        [Route("api/report/{trainingName}/dates/{dateFrom}/{dateTo}")]
+        public IEnumerable<Report> GetReportForTrainingByDate(string trainingName, string dateFrom, string dateTo)
+        {
+            return _reportRepository.Get(r => r.Training.Name == trainingName 
+                && r.DateTime >= DateTime.Parse(dateFrom) 
+                && r.DateTime <= DateTime.Parse(dateTo)
+            );
+        }
+
+        public IHttpActionResult GetReport(int id)
+        {
+            var session = _reportRepository.GetById(id);
             if (session == null)
             {
                 return NotFound();
@@ -33,9 +48,9 @@ namespace TrainerWebApi.Controllers
             return Ok(session);
         }
 
-        public IHttpActionResult PostTrainingSession(Report session)
+        public IHttpActionResult AddReport(Report session)
         {
-            _trainingSessionRepository.Add(session);
+            _reportRepository.Add(session);
             return Ok();
         }
     }

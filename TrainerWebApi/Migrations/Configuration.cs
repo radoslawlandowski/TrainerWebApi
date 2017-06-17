@@ -207,6 +207,35 @@ namespace TrainerWebApi.Migrations
                }
            );
 
+            context.Reports.AddOrUpdate(
+                r => r.Id,
+                new Report
+                {
+                    DateTime = DateTime.Parse("30-01-2017"),
+                    Training = context.Trainings.FirstOrDefault(t => t.Name == "test_training_1")
+                },
+                new Report
+                {
+                    DateTime = DateTime.Parse("05-02-2017"),
+                    Training = context.Trainings.FirstOrDefault(t => t.Name == "test_training_1")
+                },
+                new Report
+                {
+                    DateTime = DateTime.Parse("10-02-2017"),
+                    Training = context.Trainings.FirstOrDefault(t => t.Name == "test_training_1")
+                },
+                new Report
+                {
+                    DateTime = DateTime.Parse("15-02-2017"),
+                    Training = context.Trainings.FirstOrDefault(t => t.Name == "test_training_1")
+                },
+                new Report
+                {
+                    DateTime = DateTime.Parse("20-02-2017"),
+                    Training = context.Trainings.FirstOrDefault(t => t.Name == "test_training_1")
+                }    
+            );
+
             try
             {
                 context.SaveChanges();

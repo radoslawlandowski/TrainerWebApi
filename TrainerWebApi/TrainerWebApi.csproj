@@ -156,6 +156,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ConfigHelper.cs" />
+    <Compile Include="Helpers\IConfigHelper.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ExercisePlan.cs" />
     <Compile Include="Models\ExerciseCard.cs" />

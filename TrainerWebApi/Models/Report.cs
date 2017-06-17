@@ -1,5 +1,6 @@
 ﻿using System;
 using TrainerWebApi.Enums;
+using TrainerWebApi.Helpers;
 
 namespace TrainerWebApi.Models
 {
@@ -9,6 +10,6 @@ namespace TrainerWebApi.Models
 
         public DateTime DateTime { get; set; }
 
-        public Training Training { get; set; }
+        public virtual Training Training { get; set; }
     }
 }
