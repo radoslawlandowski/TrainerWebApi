@@ -40,8 +40,6 @@ namespace TrainerWebApi.Controllers
         {
             var exerciseCard = _exerciseCardRepository.Add(exercise);
 
-           
-
             return exerciseCard == null ? request.CreateErrorResponse(HttpStatusCode.Accepted, "Exercise cannot be created") : request.CreateResponse(HttpStatusCode.OK, exerciseCard);
         }
     }

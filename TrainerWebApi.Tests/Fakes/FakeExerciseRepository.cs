@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TrainerWebApi.Models;
 using TrainerWebApi.Repositories;
@@ -42,6 +43,16 @@ namespace TrainerWebApi.Tests.Fakes
         public void Update(ExerciseCard exercise)
         {
             throw new System.NotImplementedException();
+        }
+
+        ExerciseCard IRepository<ExerciseCard>.Add(ExerciseCard item)
+        {
+            throw new NotImplementedException();
+        }
+
+        ExerciseCard IRepository<ExerciseCard>.Remove(ExerciseCard item)
+        {
+            throw new NotImplementedException();
         }
     }
 }

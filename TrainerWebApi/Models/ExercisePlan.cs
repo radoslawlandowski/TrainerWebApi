@@ -8,11 +8,11 @@ namespace TrainerWebApi.Models
 
         public string Name { get; set; }
 
-        public virtual ICollection<Dictionary<int, double>> Sets { get; set; }
+        public virtual ICollection<ExerciseSet> Sets { get; set; }
 
         public ExercisePlan()
         {
-            Sets = new List<Dictionary<int, double>>();
+            Sets = new List<ExerciseSet>();
         }
     }
 }

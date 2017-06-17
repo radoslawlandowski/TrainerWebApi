@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace TrainerWebApi.Models
 {
@@ -10,6 +11,7 @@ namespace TrainerWebApi.Models
         
         public virtual ICollection<ExercisePlan> Exercises { get; set; } 
 
+        [JsonIgnore]
         public virtual User User { get; set; }
 
         public Training()

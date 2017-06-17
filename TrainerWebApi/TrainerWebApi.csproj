@@ -160,6 +160,7 @@
     <Compile Include="Models\ExercisePlan.cs" />
     <Compile Include="Models\ExerciseCard.cs" />
     <Compile Include="Models\Muscle.cs" />
+    <Compile Include="Models\ExerciseSet.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Training.cs" />
     <Compile Include="Models\Report.cs" />

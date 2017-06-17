@@ -18,9 +18,16 @@ namespace TrainerWebApi.Controllers
             _trainingRepository = trainingRepository;
         }
 
-        public IEnumerable<Training> GetTrainings()
+        [Route("api/training/{username}")]
+        public IEnumerable<Training> GetTrainings(string username)
         {
-            return _trainingRepository.GetAll();
+            return _trainingRepository.Get(t => t.User.UserName == username);
+        }
+
+        [Route("api/training/{username}/name/{name}")]
+        public IEnumerable<Training> GetTrainings(string username, string name)
+        {
+            return _trainingRepository.Get(t => t.User.UserName == username && t.Name == name);
         }
 
         public IHttpActionResult GetTraining(int id)

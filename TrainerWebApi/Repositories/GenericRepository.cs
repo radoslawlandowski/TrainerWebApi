@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Linq.Expressions;
 using TrainerWebApi.DAL;
 
 namespace TrainerWebApi.Repositories
@@ -56,5 +57,9 @@ namespace TrainerWebApi.Repositories
             _context.SaveChanges();
         }
 
+        public IEnumerable<T> Get(Func<T, bool> predicate)
+        {
+            return _context.Set<T>().Where(predicate);
+        }
     }
 }

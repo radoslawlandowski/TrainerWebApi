@@ -1,13 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace TrainerWebApi.Repositories
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<T> where T : class
     {
-        TEntity GetById(int id);
-        IEnumerable<TEntity> GetAll();
-        TEntity Add(TEntity item);
-        TEntity Remove(TEntity item);
-        void Update(TEntity item);
+        T GetById(int id);
+        IEnumerable<T> Get(Func<T, bool> predicate);
+        IEnumerable<T> GetAll();
+        T Add(T item);
+        T Remove(T item);
+        void Update(T item);
     }
 }
